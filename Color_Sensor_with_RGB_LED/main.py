@@ -1,5 +1,6 @@
 from sensorRead import get_color
 from PWM_All_LEDs import set_color
+from PWM_All_LEDs import GPIO_cleanup
 import time
 
 try:
@@ -16,4 +17,5 @@ try:
 		# check sensor every 2 seconds and update the LED
 		time.sleep(2)
 except KeyboardInterrupt:
+	GPIO_cleanup()
 	pass

@@ -25,3 +25,5 @@ def set_color(rgb_colors):
 		# since my LED is common-anode, "0" here means the brightest (255) and vice-versa
 		colors[i].start(100 - round(rgb_colors[i] / 255 * 100))
 
+def GPIO_cleanup():
+	GPIO.cleanup()
