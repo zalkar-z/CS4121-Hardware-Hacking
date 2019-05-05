@@ -19,31 +19,3 @@ def set_color(rgb_colors):
 	green.start(100 - round(rgb_colors[1] / 256 * 100))
 	blue.start(100 - round(rgb_colors[2] / 255 * 100))
 
-def reset():
-	#red = rgb_pins[0]
-	#green = rgb_pins[1]
-	#blue = rgb_pins[2]
-
-	red.stop()
-	green.stop()
-	blue.stop()
-
-	GPIO.cleanup()
-
-# input_rgb = [0, 0, 0]
-
-# input_rgb[0] = int(input("Enter RED value:"))
-# input_rgb[1] = int(input("Enter GREEN value:"))
-# input_rgb[2] = int(input("Enter BLUE value:"))
-
-# tri_color(input_rgb)
-
-# time.sleep(5)
-# GPIO.cleanup()
-
-#for i in range(10):
-#	if i % 2:
-#		set_color([255, 0, 0])
-#	else:
-#		set_color([0, 255, 0])
-#	time.sleep(2)
