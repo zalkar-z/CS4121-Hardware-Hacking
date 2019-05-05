@@ -1,21 +1,27 @@
 import RPi.GPIO as GPIO
 import time
 
+# set GPIO mode to physical pins
 GPIO.setmode(GPIO.BOARD)
 
+# an array with physical addresses of RGB respectively
 rgb_pins = [15, 13, 11]
 
-GPIO.setup(rgb_pins[0], GPIO.OUT)
-red = GPIO.PWM(rgb_pins[0], 100)
+# an empty list for later use of PWM objects
+colors = []
 
-GPIO.setup(rgb_pins[1], GPIO.OUT)
-green = GPIO.PWM(rgb_pins[1], 100)
+# set all three color pins in PWM mode
+for i in range(3):
+	GPIO.setup(rgb_pins[i], GPIO.OUT)
+	colors.append(GPIO.PWM(rgb_pins[i], 100))
 
-GPIO.setup(rgb_pins[2], GPIO.OUT)
-blue = GPIO.PWM(rgb_pins[2], 100)
-
+#
+# Function: changes LED's colors
+# rgb_colors - an array of size 3
+#
 def set_color(rgb_colors):
-	red.start(100 - round(rgb_colors[0] / 256 * 100))
-	green.start(100 - round(rgb_colors[1] / 256 * 100))
-	blue.start(100 - round(rgb_colors[2] / 255 * 100))
+	# convert passed values to display on LED
+	for i in range(3):
+		# since my LED is common-anode, "0" here means the brightest (255) and vice-versa
+		colors[i].start(100 - round(rgb_colors[i] / 255 * 100))
 
