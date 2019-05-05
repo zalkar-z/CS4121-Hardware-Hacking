@@ -1,30 +1,12 @@
-# import board
-# import busio
-# import time
-# import adafruit_tcs34725
-# i2c = busio.I2C(board.SCL, board.SDA)
-# sensor = adafruit_tcs34725.TCS34725(i2c)
-
-
-# def get_color():
-#	return sensor.color_rgb_bytes
-
-
 import smbus
 import time
 
 SENSOR_ADDRESS = 0x29
 bus = smbus.SMBus(1)
 
-#bus.write_byte_data(SENSOR_ADDRESS, 0x00, 0x01)
-
-
 def get_color():
 	# enable register - 0X03
 	bus.write_byte_data(SENSOR_ADDRESS, 0x00, 0b00000011)
-
-	# setting timing register
-	# bus.write_byte_data(SENSOR_ADDRESS, 0x01, 0xF6)
 
 	# CLEAR LOW
 	clear = bus.read_byte_data(SENSOR_ADDRESS, 0b10010100)
@@ -42,12 +24,6 @@ def get_color():
 	blue = bus.read_byte_data(SENSOR_ADDRESS, 0b10011010)
 	blue_high = bus.read_byte_data(SENSOR_ADDRESS, 0b10011011)
 
-
-	# print("CLEAR: ", clear, "-", clear_high)
-	# print("RED: ", red, "-", red_high)
-	# print("GREEN :", green, "-", green_high)
-	# print("BLUE :", blue, "-", blue_high)
-
 	# temporary
 	clear = clear_high
 
@@ -60,12 +36,3 @@ def get_color():
 
 	return [red, green, blue]
 
-
-#for i in range(10):
-#	print(get_color())
-#	time.sleep(2)
-
-
-# print("RED: ", red)
-# print("GREEN: ", green)
-# print("BLUE: ", blue) 
