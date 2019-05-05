@@ -7,6 +7,7 @@ old_color = [0, 0, 0]
 try:
 	while True:
 		color = sensor.get_color()
+		print(color)
 		if color != old_color:
 			LED.reset()
 			LED.set_color(color)

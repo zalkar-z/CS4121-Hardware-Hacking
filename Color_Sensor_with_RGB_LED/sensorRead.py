@@ -51,12 +51,12 @@ blue_high = bus.read_byte_data(SENSOR_ADDRESS, 0b10011011)
 # blue = int(str(blue), 16)
 
 
-print("CLEAR: ", clear, "-", clear_high)
-print("RED: ", red, "-", red_high)
-print("GREEN :", green, "-", green_high)
-print("BLUE :", blue, "-", blue_high)
+#print("CLEAR: ", clear, "-", clear_high)
+#print("RED: ", red, "-", red_high)
+#print("GREEN :", green, "-", green_high)
+#print("BLUE :", blue, "-", blue_high)
 
-print("-----------")
+#print("-----------")
 
 # temporary
 clear = clear_high
@@ -68,6 +68,10 @@ else:
 	green = green_high / clear * 255.0
 	blue = blue_high / clear * 255.0
 
-print("RED: ", red)
-print("GREEN: ", green)
-print("BLUE: ", blue) 
+
+def get_color():
+	return [red, green, blue]
+
+# print("RED: ", red)
+# print("GREEN: ", green)
+# print("BLUE: ", blue) 
