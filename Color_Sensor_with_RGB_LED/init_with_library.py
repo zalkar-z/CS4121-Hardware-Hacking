@@ -1,18 +1,19 @@
-import sensorRead as sensor
-import PWM_All_LEDs as LED
+from sensorRead import get_color
+from PWM_All_LEDs import set_color
 import time
-
-old_color = [0, 0, 0]
 
 try:
 	while True:
-		color = sensor.get_color()
-		print(color)
-		if color != old_color:
-			LED.reset()
-			LED.set_color(color)
+		# get the RGB color array from sensorRead.py
+		color = get_color()
 		
-		old_color = color
+		print(color)
+		print("------")
+		
+		# set the LED to match the color from sensor
+		set_color(color)
+		
+		# check sensor every 2 seconds and update the LED
 		time.sleep(2)
 except KeyboardInterrupt:
 	pass

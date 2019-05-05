@@ -40,3 +40,10 @@ def reset():
 
 # time.sleep(5)
 # GPIO.cleanup()
+
+#for i in range(10):
+#	if i % 2:
+#		set_color([255, 0, 0])
+#	else:
+#		set_color([0, 255, 0])
+#	time.sleep(2)
